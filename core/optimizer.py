@@ -94,7 +94,7 @@ def optimize(N, dim, bounds, T, objective_function, parameters):
             # M_i = μ (X_best - X_i) + ν (X_pbest - X_i)
             # Applied periodically
             if t > 0 and t % T_m == 0:
-                M_i = compute_migration(x_i, X_best, pbest_positions[i], mu, nu)
+                M_i = compute_migration(x_i, X_best, pbest_positions,i, mu, nu)
             else:
                 M_i = np.zeros(dim)
 
