@@ -1,3 +1,18 @@
+import numpy as np
+
+
+def compute_step_size(i, neighbors, fitness, S_max, k):
+    neighbors_fitness = fitness[neighbors]
+    f_i = fitness[i]
+    f_neighbors_mean = np.mean(neighbors_fitness)
+    p_i = abs(f_i - f_neighbors_mean) / (1 + abs(f_neighbors_mean))
+    S_i = S_max * np.exp(-k * p_i)
+    return S_i
+
+
+def compute_exploration(t, T, E0):
+    E_i = E0 * (1 - t / T)
+    return E_i
 # --------------------------------------------------
 # compute_step_size function
 # Pressure-Aware Step Size (PAS)
